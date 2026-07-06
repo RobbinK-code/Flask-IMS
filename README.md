@@ -15,7 +15,7 @@ This project provides a small Flask-based inventory management API with CRUD fun
 python app.py
 ```
 
-The API will be available at http://127.0.0.1:5000.
+The API will be available at http://127.0.0.1:5000. The root endpoint returns a simple status payload for health checks.
 
 ## CLI Examples
 

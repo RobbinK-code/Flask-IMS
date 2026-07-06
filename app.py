@@ -24,6 +24,10 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 return item
         return None
 
+    @app.route("/", methods=["GET"])
+    def index():
+        return jsonify({"message": "Flask Inventory Management System API", "status": "ok"})
+
     @app.route("/inventory", methods=["GET"])
     def list_inventory():
         return jsonify(inventory)
