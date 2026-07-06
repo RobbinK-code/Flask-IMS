@@ -9,6 +9,11 @@ class InventoryApiTests(unittest.TestCase):
         self.app = create_app({"TESTING": True})
         self.client = self.app.test_client()
 
+    def test_root_endpoint_returns_status(self):
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json()["status"], "ok")
+
     def test_get_inventory_returns_empty_list_initially(self):
         response = self.client.get("/inventory")
         self.assertEqual(response.status_code, 200)
