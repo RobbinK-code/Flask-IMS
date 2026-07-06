@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 
 from app import create_app
 
@@ -69,7 +70,7 @@ class InventoryApiTests(unittest.TestCase):
 
         from app import fetch_product_details
 
-        with unittest.mock.patch("app.urlopen", side_effect=fake_fetch):
+        with mock.patch("app.urlopen", side_effect=fake_fetch):
             data = fetch_product_details("123456789")
 
         self.assertEqual(data["product_name"], "Sample Product")

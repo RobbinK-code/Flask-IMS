@@ -102,8 +102,11 @@ def fetch_product_details(query: str) -> dict[str, Any]:
         )
 
     request = Request(url, headers={"User-Agent": "Flask-IMS/1.0"})
-    with urlopen(request, timeout=5) as response:
+    response = urlopen(request, timeout=5)
+    if hasattr(response, "read"):
         payload = json.loads(response.read().decode("utf-8"))
+    else:
+        payload = response.json()
 
     if payload.get("product"):
         product = payload["product"]
