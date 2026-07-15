@@ -5,7 +5,7 @@ from typing import Any
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 
 
 def create_app(test_config: dict[str, Any] | None = None) -> Flask:
@@ -90,6 +90,14 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
     @app.route("/products/<path:query>", methods=["GET"])
     def product_lookup(query: str):
         return jsonify(fetch_product_details(query))
+
+    @app.route("/ui", methods=["GET"])
+    def ui():
+        return send_from_directory("Frontend", "index.html")
+
+    @app.route('/frontend/<path:filename>', methods=['GET'])
+    def frontend_files(filename: str):
+        return send_from_directory('Frontend', filename)
 
     return app
 

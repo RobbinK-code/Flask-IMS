@@ -1,0 +1,7 @@
+body { font-family: system-ui, Arial, sans-serif; padding: 20px; }
+main { max-width: 900px; margin: 0 auto; }
+form label { display: block; margin: 6px 0; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
+input[type=number] { width: 80px; }
+button { margin-right: 6px; }
